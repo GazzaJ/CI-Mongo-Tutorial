@@ -22,7 +22,9 @@ conn = mongo_connect(MONGO_URI)
 
 coll = conn[DATABASE][COLLECTION]
 
-documents = coll.find({"first": "douglas"})
+coll.remove({"first": "douglas"})
+
+documents = coll.find()
 
 for doc in documents:
     print(doc)
