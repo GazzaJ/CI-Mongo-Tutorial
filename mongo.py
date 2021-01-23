@@ -22,9 +22,9 @@ conn = mongo_connect(MONGO_URI)
 
 coll = conn[DATABASE][COLLECTION]
 
-coll.remove({"first": "douglas"})
+coll.update_many({"nationality": "american"}, {"$set":{"hair_color": "maroon"}})
 
-documents = coll.find()
+documents = coll.find({"nationality": "american"})
 
 for doc in documents:
     print(doc)
