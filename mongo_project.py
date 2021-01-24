@@ -29,11 +29,39 @@ def show_menu():
     return option
 
 
+def add_record():
+    print("")
+    first = input("Enter a first name > ")
+    last = input("Enter a last name > ")
+    dob = input("Enter a date of birth > ")
+    gender = input("Enter a gender > ")
+    hair_color = input("Enter hair color > ")
+    occupation = input("Enter an occupation > ")
+    nationality = input("Enter a nationality > ")
+
+    new_doc = {
+        "first": first.lower(),
+        "last": last.lower(),
+        "dob": dob,
+        "gender": gender,
+        "hair_color": hair_color.lower(),
+        "occupation": occupation.lower(),
+        "nationality": nationality.lower()
+    }
+
+    try:
+        coll.insert(new_doc)
+        print("")
+        print("Document successfully inserted!")
+    except:
+        print("Error accessing the database!")
+
+
 def main_loop():
     while True:
         option = show_menu()
         if option == "1":
-            print("You have selected option 1")
+            add_record()
         elif option == "2":
             print("You have selected option 2")
         elif option == "3":
