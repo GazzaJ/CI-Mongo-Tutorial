@@ -29,6 +29,23 @@ def show_menu():
     return option
 
 
+def get_record():
+    print("")
+    first = input("Enter a first name > ")
+    last = input("Enter a last name > ")
+
+    try:
+        doc = coll.find_one({"first": first.lower(), "last": last.lower()})
+    except:
+        print("Error accessing the database!")
+
+    if not doc:
+        print("")
+        print("Error! No matching results found.")
+
+    return doc
+
+
 def add_record():
     print("")
     first = input("Enter a first name > ")
